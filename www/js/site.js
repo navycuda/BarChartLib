@@ -6,9 +6,23 @@ $(document).ready(function(){
     result.innerText = text;
     return result;
   };
+  const drawBarChart = function (data, options, element) {
+    const result = document.createElement("div");
+    result.attributes("class", "bC_chart");
 
 
-  // main body
+
+
+
+
+
+    element.appendChild(result);
+  };
+
+
+
+
+  // The stuff that isn't functions!
   const body = document.body;
 
   const header = document.createElement("header");
@@ -29,5 +43,6 @@ $(document).ready(function(){
     body.appendChild(divs[d]);
   }
 
+  drawBarChart("drawBarChart", "", body);
 
 });

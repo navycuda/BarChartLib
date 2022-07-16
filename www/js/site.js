@@ -1,22 +1,23 @@
 /* eslint-env es6 */
 // Do stuff once the document is ready.
 $(document).ready(function(){
-  const createDiv = function(text) {
-    const result = document.createElement("div");
-    result.innerText = text;
-    return result;
-  };
+/// data = [data]                               // X  : Single axis table, elements get bars
+/// data = [[header],[data]]                    // Y  : Single axis table, x = header, y = data
+/// data = [[ColHeader],[RowHeader],[data]]     // Z  : Two axis table, x= header, y = colHeader, z = data
+///                                                     data.length === col * row;
+/// options = {
+///   min: 0,
+///   max: 100,
+///
+///
+/// }
+/// element = document.element
   const drawBarChart = function (data, options, element) {
-    const result = document.createElement("div");
-    result.attributes("class", "bC_chart");
+    const parent = document.createElement("div");
+    parent.setAttribute("class", "bC_Chart");
 
 
-
-
-
-
-
-    element.appendChild(result);
+    element.append(parent);
   };
 
 
@@ -25,24 +26,19 @@ $(document).ready(function(){
   // The stuff that isn't functions!
   const body = document.body;
 
-  const header = document.createElement("header");
-  const headerTitle = document.createElement("h1");
 
-  body.appendChild(header);
-  header.appendChild(headerTitle);
 
-  headerTitle.append("Hello Deroche!");
+  drawBarChart([ 0, 25, 50, 75, 100 ], { min: 0, max: 100 }, body);
 
-  const divs = [
-    createDiv("div 1"),
-    createDiv("div 2"),
-    createDiv("div 3")
-  ];
 
-  for (let d = 0; d < divs.length; d++){
-    body.appendChild(divs[d]);
-  }
-
-  drawBarChart("drawBarChart", "", body);
+  const progressBar = document.getElementsByClassName('progress-bar')[0];
+  const runBar = setInterval(() => {
+    const computedStyle = getComputedStyle(progressBar);
+    const width = parseFloat(computedStyle.getPropertyValue('--width')) || 0;
+    progressBar.style.setProperty('--width', width + 0.1);
+    if (width === 99.9){
+      clearInterval(runBar);
+    }
+  }, 5);
 
 });

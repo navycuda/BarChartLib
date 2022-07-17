@@ -13,32 +13,19 @@ $(document).ready(function(){
 /// }
 /// element = document.element
   const drawBarChart = function (data, options, element) {
-    const parent = document.createElement("div");
-    parent.setAttribute("class", "bC_Chart");
+    // For starters, assume the types passed in are correct.
+    // create the chart element and populate the body
+    const chart = document.createElement("div");
+    chart.setAttribute("class", "_chart");
+    element.appendChild(chart);
 
 
-    element.append(parent);
   };
-
 
 
 
   // The stuff that isn't functions!
   const body = document.body;
 
-
-
   drawBarChart([ 0, 25, 50, 75, 100 ], { min: 0, max: 100 }, body);
-
-
-  const progressBar = document.getElementsByClassName('progress-bar')[0];
-  const runBar = setInterval(() => {
-    const computedStyle = getComputedStyle(progressBar);
-    const width = parseFloat(computedStyle.getPropertyValue('--width')) || 0;
-    progressBar.style.setProperty('--width', width + 0.1);
-    if (width === 99.9){
-      clearInterval(runBar);
-    }
-  }, 5);
-
 });

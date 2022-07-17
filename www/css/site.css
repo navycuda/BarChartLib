@@ -39,9 +39,16 @@ body {
 
 .single-dimension {
   position: relative;
-  background-color: var(--graph-background);
+  align-items: center;
+  width: 500px;
+  height: 1.5em;
+  color: #292f38;
 }
 .single-dimension::before {
+  overflow: hidden;
   position: absolute;
+  content: attr(data-value);
+  width: calc(var(--width, 0) * 1%);
   color: var(--graph-foreground);
+  background-color: var(--graph-background);
 }

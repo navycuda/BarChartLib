@@ -37,18 +37,26 @@ body {
   padding: 1em;
 }
 
-.single-dimension {
+._row {
   position: relative;
+  display: flexbox;
   align-items: center;
   width: 500px;
   height: 1.5em;
-  color: #292f38;
+  color: var(--graph-background);
+  padding-left: 1em;
 }
-.single-dimension::before {
+._row::before {
   overflow: hidden;
   position: absolute;
+  display: flex;
   content: attr(data-value);
+  align-items: center;
+  vertical-align: middle;
   width: calc(var(--width, 0) * 1%);
+  height: 1.5em;
   color: var(--graph-foreground);
   background-color: var(--graph-background);
+  margin-left: -1em;
+  padding-left: 1em;
 }
